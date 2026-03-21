@@ -630,6 +630,175 @@
 
     footer a { color: var(--accent); text-decoration: none; }
 
+    /* ── LINKEDIN POST CARDS ── */
+    .li-posts-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 3rem;
+    }
+
+    .li-post-card {
+      display: flex;
+      flex-direction: column;
+      padding: 1.25rem 1.5rem;
+      border-radius: var(--radius);
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      text-decoration: none;
+      transition: all 0.25s;
+      box-shadow: var(--card-shadow);
+      gap: 0.75rem;
+    }
+
+    .li-post-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--card-shadow-hover);
+      border-color: var(--blue);
+    }
+
+    .li-post-header {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .li-post-avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: white;
+      letter-spacing: 0.03em;
+    }
+
+    .li-post-meta strong {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .li-post-meta span {
+      font-size: 0.72rem;
+      color: var(--gray-500);
+    }
+
+    .li-post-card p {
+      font-size: 0.875rem;
+      color: var(--gray-700);
+      line-height: 1.55;
+      flex: 1;
+    }
+
+    .li-post-link {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--blue);
+    }
+
+    .li-all-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--blue);
+      text-decoration: none;
+      margin-bottom: 3.5rem;
+    }
+
+    .li-all-link:hover { text-decoration: underline; }
+
+    /* ── GUIDE VE ── */
+    .guide-intro {
+      font-size: 0.95rem;
+      color: var(--gray-500);
+      line-height: 1.7;
+      max-width: 700px;
+      margin-bottom: 2rem;
+    }
+
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .chapter-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.1rem 1.25rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--gray-200);
+      text-decoration: none;
+      transition: all 0.25s;
+      background: var(--white);
+    }
+
+    .chapter-card.published {
+      box-shadow: var(--card-shadow);
+    }
+
+    .chapter-card.published:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--card-shadow-hover);
+      border-color: var(--blue);
+    }
+
+    .chapter-card.soon {
+      background: var(--gray-50);
+      opacity: 0.65;
+      cursor: default;
+    }
+
+    .chapter-num {
+      min-width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .chapter-card.published .chapter-num {
+      background: var(--blue);
+      color: white;
+    }
+
+    .chapter-card.soon .chapter-num {
+      background: var(--gray-200);
+      color: var(--gray-500);
+    }
+
+    .chapter-text strong {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.2rem;
+      line-height: 1.35;
+    }
+
+    .chapter-text .chapter-status {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+    }
+
+    .chapter-card.published .chapter-status { color: var(--blue); }
+    .chapter-card.soon .chapter-status { color: var(--gray-500); }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       .hero-inner {
@@ -643,6 +812,8 @@
       .hero-pills { justify-content: center; }
       .social-links { justify-content: center; }
       .expertise-grid { grid-template-columns: 1fr; }
+      .li-posts-grid { grid-template-columns: 1fr; }
+      .guide-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
     }
 
@@ -659,6 +830,7 @@
   <a href="#hero" class="nav-logo">Roman <span>Potocki</span></a>
   <ul class="nav-links">
     <li><a href="#pro">Expertise</a></li>
+    <li><a href="#guide-ve">Guide VE</a></li>
     <li><a href="#presse">Presse</a></li>
     <li><a href="#creations">Créations</a></li>
     <li><a href="#perso">Projets perso</a></li>
@@ -727,16 +899,132 @@
 
     <!-- LinkedIn Posts -->
     <div class="subsection-title">Derniers posts LinkedIn</div>
-    <div class="linkedin-placeholder" style="margin-bottom: 3rem;">
-      <div class="linkedin-placeholder-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    <div class="li-posts-grid">
+      <a href="https://www.linkedin.com/posts/romanpotocki_retour-sur-flotauto-2026-de-flottes-automobiles-activity-7440306459516620800-A5uT"
+         target="_blank" rel="noopener" class="li-post-card">
+        <div class="li-post-header">
+          <div class="li-post-avatar">RP</div>
+          <div class="li-post-meta">
+            <strong>Roman Potocki</strong>
+            <span>Senior Manager Énergie & Mobilité</span>
+          </div>
+        </div>
+        <p>Retour sur FlotAuto 2026 — un événement incontournable sur les flottes automobiles et la mobilité d'entreprise, entre enjeux de décarbonation et nouvelles pratiques de gestion de flotte.</p>
+        <span class="li-post-link">Lire sur LinkedIn →</span>
+      </a>
+
+      <a href="https://www.linkedin.com/posts/romanpotocki_participez-%C3%A0-notre-petit-d%C3%A9jeuner-table-activity-7439577570414608384-D5LZ"
+         target="_blank" rel="noopener" class="li-post-card">
+        <div class="li-post-header">
+          <div class="li-post-avatar">RP</div>
+          <div class="li-post-meta">
+            <strong>Roman Potocki</strong>
+            <span>Senior Manager Énergie & Mobilité</span>
+          </div>
+        </div>
+        <p>Participez à notre petit-déjeuner table ronde — une matinée d'échanges entre décideurs sur les grandes transformations énergétiques et les défis de la mobilité durable.</p>
+        <span class="li-post-link">Lire sur LinkedIn →</span>
+      </a>
+
+      <a href="https://www.linkedin.com/posts/romanpotocki_transition-%C3%A9nerg%C3%A9tique-la-6%C3%A8me-p%C3%A9riode-activity-7407742492554641408-7Zxv"
+         target="_blank" rel="noopener" class="li-post-card">
+        <div class="li-post-header">
+          <div class="li-post-avatar">RP</div>
+          <div class="li-post-meta">
+            <strong>Roman Potocki</strong>
+            <span>Senior Manager Énergie & Mobilité</span>
+          </div>
+        </div>
+        <p>Transition énergétique : la 6ème période des CEE — décryptage des enjeux du nouveau cycle de Certificats d'Économies d'Énergie et de ses impacts pour les acteurs du secteur.</p>
+        <span class="li-post-link">Lire sur LinkedIn →</span>
+      </a>
+
+      <a href="https://www.linkedin.com/posts/romanpotocki_tr%C3%A8s-fier-du-travail-r%C3%A9alis%C3%A9-par-les-%C3%A9quies-activity-7402264958102687744-MnxT"
+         target="_blank" rel="noopener" class="li-post-card">
+        <div class="li-post-header">
+          <div class="li-post-avatar">RP</div>
+          <div class="li-post-meta">
+            <strong>Roman Potocki</strong>
+            <span>Senior Manager Énergie & Mobilité</span>
+          </div>
+        </div>
+        <p>Très fier du travail réalisé par les équipes — retour sur une mission conduite avec engagement et rigueur, au service de la transformation énergétique de nos clients.</p>
+        <span class="li-post-link">Lire sur LinkedIn →</span>
+      </a>
+    </div>
+    <a href="https://www.linkedin.com/in/romanpotocki" target="_blank" rel="noopener" class="li-all-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      Voir tous mes posts LinkedIn
+    </a>
+
+    <!-- Guide VE -->
+    <div class="section-divider"></div>
+    <div id="guide-ve" class="subsection-title" style="margin-top:3.5rem;">Bien démarrer en voiture électrique</div>
+    <p class="guide-intro">Un guide complet en 8 chapitres pour accompagner les futurs conducteurs de véhicule électrique — des bases techniques aux retours d'expérience concrets. Publié progressivement sur LinkedIn Pulse.</p>
+    <div class="guide-grid">
+      <a href="https://www.linkedin.com/pulse/bien-d%25C3%25A9marrer-en-voiture-%25C3%25A9lectrique-roman-potocki-xtshe/"
+         target="_blank" rel="noopener" class="chapter-card published">
+        <div class="chapter-num">1</div>
+        <div class="chapter-text">
+          <strong>Les bases et le vocabulaire pour comprendre la voiture électrique</strong>
+          <span class="chapter-status">✓ Publié</span>
+        </div>
+      </a>
+
+      <div class="chapter-card published" style="cursor:default;" title="Lien disponible prochainement">
+        <div class="chapter-num">2</div>
+        <div class="chapter-text">
+          <strong>L'expérience de conduite et les changements par rapport au véhicule thermique</strong>
+          <span class="chapter-status">✓ Publié</span>
+        </div>
       </div>
-      <div>
-        <p><strong>Mes dernières réflexions sur LinkedIn</strong> — Retrouvez mes analyses sur la mobilité électrique, la transition énergétique et l'innovation digitale directement sur mon profil.</p>
-        <br>
-        <a href="https://www.linkedin.com/in/romanpotocki" target="_blank" rel="noopener" style="font-size:0.85rem;font-weight:600;color:var(--blue);text-decoration:none;">
-          Voir tous mes posts →
-        </a>
+
+      <div class="chapter-card published" style="cursor:default;" title="Lien disponible prochainement">
+        <div class="chapter-num">3</div>
+        <div class="chapter-text">
+          <strong>Les grands principes de la recharge</strong>
+          <span class="chapter-status">✓ Publié</span>
+        </div>
+      </div>
+
+      <div class="chapter-card soon">
+        <div class="chapter-num">4</div>
+        <div class="chapter-text">
+          <strong>La recharge à domicile</strong>
+          <span class="chapter-status">Prochainement</span>
+        </div>
+      </div>
+
+      <div class="chapter-card soon">
+        <div class="chapter-num">5</div>
+        <div class="chapter-text">
+          <strong>La recharge en itinérance</strong>
+          <span class="chapter-status">Prochainement</span>
+        </div>
+      </div>
+
+      <div class="chapter-card soon">
+        <div class="chapter-num">6</div>
+        <div class="chapter-text">
+          <strong>Les principaux réseaux de recharge à connaître</strong>
+          <span class="chapter-status">Prochainement</span>
+        </div>
+      </div>
+
+      <div class="chapter-card soon">
+        <div class="chapter-num">7</div>
+        <div class="chapter-text">
+          <strong>Accessoires, entretien, durée de vie, coût à l'usage…</strong>
+          <span class="chapter-status">Prochainement</span>
+        </div>
+      </div>
+
+      <div class="chapter-card soon">
+        <div class="chapter-num">8</div>
+        <div class="chapter-text">
+          <strong>Verbatims et retours d'expérience d'utilisateurs</strong>
+          <span class="chapter-status">Prochainement</span>
+        </div>
       </div>
     </div>
 
